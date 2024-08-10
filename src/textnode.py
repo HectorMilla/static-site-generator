@@ -1,5 +1,5 @@
 
-class Textnode:
+class TextNode:
     def __init__(self, text, text_type,url=None):
         self.text = text
         self.text_type = text_type
@@ -13,7 +13,6 @@ class Textnode:
     
 
 def main():
-    test = Textnode("This is a text node","bold","https://www.boot.dev")
+    test = TextNode("This is a text node","bold","https://www.boot.dev")
     print(test)
 
-main()  
