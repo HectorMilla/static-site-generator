@@ -1,1 +1,3 @@
-print("hello world")
+from textnode import main
+
+main()
