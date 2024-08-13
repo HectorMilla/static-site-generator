@@ -1,6 +1,6 @@
 import unittest
 
-from htmlnode import HTMLNode, LeafNode
+from htmlnode import HTMLNode, LeafNode, ParentNode
 
 
 class TestHTMLNode(unittest.TestCase):
@@ -10,7 +10,7 @@ class TestHTMLNode(unittest.TestCase):
             "h1", "This is a test", "p", {"href": "www.google.com", "target": "_blank"}
         )
         self.assertEqual(
-            node.props_to_html(), ' href= "www.google.com"  target= "_blank" '
+            node.props_to_html(), ' href= "www.google.com" target= "_blank"'
         )
 
     def test_none(self):
@@ -30,8 +30,19 @@ class TestLeafNode(unittest.TestCase):
     
     def test_to_html(self):
         leaf_Node = LeafNode("this is my content","a",{"href": "www.google.com"})
-        self.assertEqual(leaf_Node.to_html(),f"<{leaf_Node.tag} {leaf_Node.props_to_html()}>{leaf_Node.value}</{leaf_Node.tag}>")
+        self.assertEqual(leaf_Node.to_html(),f"<{leaf_Node.tag}{leaf_Node.props_to_html()}>{leaf_Node.value}</{leaf_Node.tag}>")
 
+class TestParentNode(unittest.TestCase):
+
+    def test_to_html(self):
+        node = ParentNode([
+        LeafNode("b", "Bold text",{"test": "how this look"}),
+        LeafNode(None, "Normal text"),
+        LeafNode("i", "italic text"),
+        LeafNode(None, "Normal text"),
+    ],"p",{"href": "www.google.com"})
+        print(node.to_html(),"***********parent node")
+    
 
 if __name__ == "__main__":
     unittest.main()
