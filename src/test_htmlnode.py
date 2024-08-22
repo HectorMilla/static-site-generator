@@ -23,23 +23,18 @@ class TestHTMLNode(unittest.TestCase):
         )
         print(node.__repr__(), "| repr works")
 
-class TestLeafNode(unittest.TestCase):
     def test_LeafNode(self):
         leaf_Node = LeafNode("this is my content","a",{"href": "www.google.com"})
         print(leaf_Node, "this is a leaf node ")
-    
-    def test_to_html(self):
-        leaf_Node = LeafNode("this is my content","a",{"href": "www.google.com"})
         self.assertEqual(leaf_Node.to_html(),f"<{leaf_Node.tag}{leaf_Node.props_to_html()}>{leaf_Node.value}</{leaf_Node.tag}>")
 
-class TestParentNode(unittest.TestCase):
-
+    #testing to html in parent node
     def test_to_html(self):
         node = ParentNode([
-        LeafNode("b", "Bold text",{"test": "how this look"}),
-        LeafNode(None, "Normal text"),
-        LeafNode("i", "italic text"),
-        LeafNode(None, "Normal text"),
+        LeafNode("Bold text","b" ,{"test": "how this look"}),
+        LeafNode("replaced none with this"),
+        LeafNode("italic text","i" ),
+        LeafNode("replaced none with this", "b"),
     ],"p",{"href": "www.google.com"})
         print(node.to_html(),"***********parent node")
 
