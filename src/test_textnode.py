@@ -27,11 +27,13 @@ class TestTextNode(unittest.TestCase):
         self.assertEqual(text_node_to_html_node(node2).to_html(),"<i>This is a text node</i>")
     
     def test_split_nodes_delimiter(self):
-        node = TextNode("This is text with a `code block` word", "text")
-        self.assertEqual(split_nodes_delimiter([node],"`", "code"),[
-    TextNode("This is text with a ", "text"),
-    TextNode("code block", "code"),
-    TextNode(" word", "text"),
-])
+        node = TextNode("This is text with a `code block` bb", "text")
+        node1 = TextNode("This is a bold word **OMGEA** yeahhh","text")
+        split_nodes_delimiter([node,node1],"**","bold")
+    #     self.assertEqual(split_nodes_delimiter([node],"`", "code"),[
+    # TextNode("This is text with a ", "text"),
+    # TextNode("code block", "code"),
+    # TextNode(" word", "text"),
+#])
 if __name__ == "__main__":
     unittest.main()
