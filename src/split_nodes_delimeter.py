@@ -96,8 +96,8 @@ def split_nodes_link(old_nodes):
     return new_nodes
 
         
-node = TextNode(
-    "This is text with a link [to boot dev](https://www.boot.dev) and [to youtube](https://www.youtube.com/@bootdotdev)",
-    text_type_text,
-)
-split_nodes_image([node])
+def text_to_textnodes(text):
+    final_text = []
+    final_text.append(split_nodes_delimiter(text))
+    print(final_text)
+text_to_textnodes("This is **text** with an *italic* word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)")
