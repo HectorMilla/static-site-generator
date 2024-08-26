@@ -36,7 +36,7 @@ class TestHTMLNode(unittest.TestCase):
         LeafNode("italic text","i" ),
         LeafNode("replaced none with this", "b"),
     ],"p",{"href": "www.google.com"})
-        print(node.to_html(),"***********parent node")
+        #print(node.to_html(),"***********parent node  testttinggnggnggnng")
 
 
 if __name__ == "__main__":
